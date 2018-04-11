@@ -17,9 +17,9 @@ public class Controller {
                 + "\ncreated by the late desiesed Dr. Amadeus Arkham, the founder of the Asylum"
                 + "\nLet's play!");
 
-        Room livingRoom = new Room("\nYou entered through the only door, and see a quite uncanny livingroom."
-                + "\nIt has everything a livingroom needs to have but covered in dust and spider web, "
-                + "the furnitures looks like something from hundres of years ago");
+        Room livingRoom = new Room("\nYou entered through the only door, and see a quite uncanny living room."
+                + "\nIt has everything a living room needs to have but covered in dust and spider web, "
+                + "the furnitures look like something from hundreds of years ago");
 
         Room library = new Room("\nYou step in to a tall but small room, the walls are giant bookshelfs, "
                 + "\nwith no spot left open for new books. You look around and notice that all the books "
@@ -38,7 +38,8 @@ public class Controller {
 
         Room diningRoom = new Room("Dining Room");
 
-        Room kitchen = new Room("Kitchen");
+        Room kitchen = new Room("\nThis is without a doubt the kitchen. There is a distinct smell of rot. There may be something "
+                + "\nin here you could use.");
 
         Room bedroom = new Room("Bedroom");
 
