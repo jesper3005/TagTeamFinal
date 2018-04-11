@@ -11,9 +11,9 @@ public class Controller {
     public static final int WEST = 3;
 
     public void start() {
-Room hall = new Room("\nHere in the grand hall of Arkham Asylum, where your adventure will take place, "
-        + "\nyou are commitet to save Gotham from insanity. In front of you, you see a large staircase"
-        + "\nwhat seems to be the only way into the Asylum.");
+        Room hall = new Room("\nYou enter Arkham through a large metal door and stand in the grand hall of Arkham Asylum, where your adventure will take place, "
+                + "\nyou are commitet to save Gotham from insanity. In front of you, you see a large staircase"
+                + "\nwhat seems to be the only way into the Asylum.");
 
         Room livingRoom = new Room("\nYou entered through the only door, and see a quite uncanny livingroom."
                 + "\nIt has everything a livingroom needs to have but covered in dust and spider web, "
@@ -107,10 +107,9 @@ Room hall = new Room("\nHere in the grand hall of Arkham Asylum, where your adve
         display.Welcome();
         display.getRoomDescription(desc);
 
-        
         while (true) {
             Room nextRoom = null;
-             do {
+            do {
                 int svar = display.getDirections();
 
                 switch (svar) {
@@ -127,22 +126,19 @@ Room hall = new Room("\nHere in the grand hall of Arkham Asylum, where your adve
                         nextRoom = player.getLocation().getWest();
                         break;
                 }
-            } while (nextRoom == null); 
-        
+            } while (nextRoom == null);
+
             {
                 player.setLocation(nextRoom);
                 desc = nextRoom.getDescription();
                 display.getRoomDescription(desc);
             }
-            
+
             if (player.getLocation().equals(cell3)) {
                 System.exit(0);
             }
-            
 
         }
     }
-
-
 
 }
