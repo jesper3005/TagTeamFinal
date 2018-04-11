@@ -26,11 +26,6 @@ public class Display {
         System.out.println(desc);
     }
     
-    public String playerInput() {        
-        System.out.print("> ");
-        String input = sc.next();
-        return input.toLowerCase();
-    }
     
      public int getDirections() {
         System.out.println("\nWhere do you want to go from here? (North, East, South, West)");
@@ -44,13 +39,9 @@ public class Display {
         
      } 
      
-//     public int intInput() {         
-//         return sc.nextInt();
-//     }
-     
-     public void exit() {
-        System.exit(0);
+             
     }
-
      
-}
+     
+  
+

@@ -11,15 +11,13 @@ public class Controller {
     public static final int WEST = 3;
 
     public void start() {
-Room hall = new Room("\nLocated in Gothem Citys, in a dark and mystery neighborhood."
-                + "\nYou start your adventure in the main hall where your journey of madness will begin"
-                + "\nSlinder through the rooms of the historcial landmark of Gotham and fight against the creatures, "
-                + "\ncreated by the late desiesed Dr. Amadeus Arkham, the founder of the Asylum"
-                + "\nLet's play!");
+Room hall = new Room("\nHere in the grand hall of Arkham Asylum, where your adventure will take place, "
+        + "\nyou are commitet to save Gotham from insanity. In front of you, you see a large staircase"
+        + "\nwhat seems to be the only way into the Asylum.");
 
         Room livingRoom = new Room("\nYou entered through the only door, and see a quite uncanny livingroom."
                 + "\nIt has everything a livingroom needs to have but covered in dust and spider web, "
-                + "the furnitures looks like something from hundres of years ago");
+                + "\nthe furnitures looks like something from hundres of years ago");
 
         Room library = new Room("\nYou step in to a tall but small room, the walls are giant bookshelfs, "
                 + "\nwith no spot left open for new books. You look around and notice that all the books "
@@ -29,17 +27,17 @@ Room hall = new Room("\nLocated in Gothem Citys, in a dark and mystery neighborh
                 + "\nin the middle of the room. The walls has enormous paintings on them, the motives on the paintings are dark "
                 + "\nand unsettleling, they seem like something only a mental person would have hanging.");
 
-        Room playRoom = new Room("This seems weird.. It appears to be a room for toddlers, it has everything a toddler would want."
-                + "It doesnt look like something for patients, perhabs Dr. Amadeus has children?");
+        Room playRoom = new Room("\nThis seems weird.. It appears to be a room for toddlers, it has everything a toddler would want."
+                + "\nIt doesnt look like something for patients, perhabs Dr. Amadeus has children?");
 
         Room Laboratory = new Room("\nYou go through a rusty old metal door, thinking to yourself only the worst kind of asylums "
                 + "\nwould have a metal door to keep their patients locked in. Then you realise, that this room is some kind of labatory, "
                 + "\nand definetly not for patients. The fear lingers in your body just thinking about what kind of experiments "
                 + "\nmight have happend to the patients. ");
 
-        Room diningRoom = new Room("You have entered a large room,  it seems to be looking like a giant livingroom. "
-                + "The dinner table could hold a feast for up to 20 people but there is only one chair, "
-                + "right at the end of the table. It seems abandoned and there is no real sign of any life.");
+        Room diningRoom = new Room("\nYou have entered a large room,  it seems to be looking like a giant livingroom. "
+                + "\nThe dinner table could hold a feast for up to 20 people but there is only one chair, "
+                + "\nright at the end of the table. It seems abandoned and there is no real sign of any life.");
 
         Room kitchen = new Room("\nThis is without a doubt the kitchen. There is a distinct smell of rot."
                 + "\nThere may be something in here you could use.");
@@ -94,7 +92,6 @@ Room hall = new Room("\nLocated in Gothem Citys, in a dark and mystery neighborh
         ballRoom.setEast(cell1);
 
         cell1.setNorth(diningRoom);
-        cell1.setSouth(cell3);
         cell1.setWest(ballRoom);
 
         cell2.setNorth(kitchen);
@@ -107,15 +104,13 @@ Room hall = new Room("\nLocated in Gothem Citys, in a dark and mystery neighborh
 
         player = new Player(display.setName(), hall);
         String desc = hall.getDescription();
+        display.Welcome();
         display.getRoomDescription(desc);
 
         
-//        while(true) {
-//            playerControl().;
-//        }
         while (true) {
             Room nextRoom = null;
-             {
+             do {
                 int svar = display.getDirections();
 
                 switch (svar) {
@@ -132,35 +127,22 @@ Room hall = new Room("\nLocated in Gothem Citys, in a dark and mystery neighborh
                         nextRoom = player.getLocation().getWest();
                         break;
                 }
-            } while (nextRoom == null) {
-            if (player.getLocation().equals(cell3)) {
-                System.exit(0);
-            }
-        }
+            } while (nextRoom == null); 
+        
             {
                 player.setLocation(nextRoom);
                 desc = nextRoom.getDescription();
                 display.getRoomDescription(desc);
             }
+            
+            if (player.getLocation().equals(cell3)) {
+                System.exit(0);
+            }
+            
 
         }
     }
 
-    public int playerControl() {
-        Room nextRoom = null;
-        switch (display.playerInput()) {
-            case "north":
-                return NORTH;
-            case "east":
-                return EAST;
-            case "south":
-                return SOUTH;
-            case "west":
-                return WEST;
-            default:
-                System.out.println("Invalid Input");
-        }
-        return -1;
-    }
+
 
 }
