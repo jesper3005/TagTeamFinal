@@ -1,6 +1,7 @@
 package textadventuregame;
 
 import java.util.Scanner;
+import static textadventuregame.Controller.*;
 
 public class Display {
     Scanner sc = new Scanner(System.in);
@@ -33,12 +34,19 @@ public class Display {
     
      public int getDirections() {
         System.out.println("\nWhere do you want to go from here? (North, East, South, West)");
-        return sc.nextInt();
+        String input = sc.next();
+        if("north".equalsIgnoreCase(input)) return NORTH;
+        if("south".equalsIgnoreCase(input)) return SOUTH;
+        if("east".equalsIgnoreCase(input)) return EAST;
+        if("west".equalsIgnoreCase(input)) return WEST;
+        System.out.println("Error");
+        return getDirections();
+        
      } 
      
-     public int intInput() {         
-         return sc.nextInt();
-     }
+//     public int intInput() {         
+//         return sc.nextInt();
+//     }
      
      public void exit() {
         System.exit(0);

@@ -136,12 +136,10 @@ public class Controller {
         Room nextRoom = null;
         switch (display.playerInput()) {
             case "north":
-                nextRoom = player.getLocation().getNorth();
                 return NORTH;
             case "east":
                 return EAST;
             case "south":
-                nextRoom = player.getLocation().getSouth();
                 return SOUTH;
             case "west":
                 return WEST;
