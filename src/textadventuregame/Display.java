@@ -34,7 +34,10 @@ public class Display {
         if("south".equalsIgnoreCase(input)) return SOUTH;
         if("east".equalsIgnoreCase(input)) return EAST;
         if("west".equalsIgnoreCase(input)) return WEST;
-        System.out.println("Error");
+        else{
+            System.out.println("Invalid Input");
+        }
+       // 
         return getDirections();
         
      } 

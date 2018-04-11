@@ -9,8 +9,58 @@ public class Controller {
     public static final int EAST = 1;
     public static final int SOUTH = 2;
     public static final int WEST = 3;
+    private Room endRoom;
+            Room nextRoom = null;
 
     public void start() {
+        Room hall = createRooms();
+
+        player = new Player(display.setName(), hall);
+        String desc = hall.getDescription();
+        display.Welcome();
+        display.getRoomDescription(desc);
+
+        while (true) {
+            playerControll();
+
+            {
+                player.setLocation(nextRoom);
+                desc = nextRoom.getDescription();
+                display.getRoomDescription(desc);
+            }
+
+            if (player.getLocation().equals(endRoom)) {
+                System.exit(0);
+            }
+
+        }
+    }
+
+    public void playerControll() {
+        do {
+            int svar = display.getDirections();
+
+            switch (svar) {
+                case NORTH:
+                    nextRoom = player.getLocation().getNorth();
+                    break;
+                case EAST:
+                    nextRoom = player.getLocation().getEast();
+                    break;
+                case SOUTH:
+                    nextRoom = player.getLocation().getSouth();
+                    break;
+                case WEST:
+                    nextRoom = player.getLocation().getWest();
+                    break;
+            }
+            if (nextRoom == null) {
+                System.out.println("Choose a diffrent direction!");
+            }
+        } while (nextRoom == null);
+    }
+
+    private Room createRooms() {
         Room hall = new Room("\nYou enter Arkham through a large metal door and stand in the grand hall of Arkham Asylum, where your adventure will take place, "
                 + "\nyou are commitet to save Gotham from insanity. In front of you, you see a large staircase"
                 + "\nwhat seems to be the only way into the Asylum.");
@@ -102,43 +152,9 @@ public class Controller {
         cell3.setEast(cell2);
         cell3.setWest(cell1);
 
-        player = new Player(display.setName(), hall);
-        String desc = hall.getDescription();
-        display.Welcome();
-        display.getRoomDescription(desc);
+        endRoom = cell3;
 
-        while (true) {
-            Room nextRoom = null;
-            do {
-                int svar = display.getDirections();
-
-                switch (svar) {
-                    case NORTH:
-                        nextRoom = player.getLocation().getNorth();
-                        break;
-                    case EAST:
-                        nextRoom = player.getLocation().getEast();
-                        break;
-                    case SOUTH:
-                        nextRoom = player.getLocation().getSouth();
-                        break;
-                    case WEST:
-                        nextRoom = player.getLocation().getWest();
-                        break;
-                }
-            } while (nextRoom == null);
-
-            {
-                player.setLocation(nextRoom);
-                desc = nextRoom.getDescription();
-                display.getRoomDescription(desc);
-            }
-
-            if (player.getLocation().equals(cell3)) {
-                System.exit(0);
-            }
-
-        }
+        return hall;
     }
 
 }
