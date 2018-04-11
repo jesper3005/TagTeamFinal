@@ -11,15 +11,15 @@ public class Controller {
     public static final int WEST = 3;
 
     public void start() {
-        Room hall = new Room("\nLocated in Gothem Citys, in a dark and mystery neighborhood."
+Room hall = new Room("\nLocated in Gothem Citys, in a dark and mystery neighborhood."
                 + "\nYou start your adventure in the main hall where your journey of madness will begin"
                 + "\nSlinder through the rooms of the historcial landmark of Gotham and fight against the creatures, "
                 + "\ncreated by the late desiesed Dr. Amadeus Arkham, the founder of the Asylum"
                 + "\nLet's play!");
 
-        Room livingRoom = new Room("\nYou entered through the only door, and see a quite uncanny living room."
-                + "\nIt has everything a living room needs to have but covered in dust and spider web, "
-                + "the furnitures look like something from hundreds of years ago");
+        Room livingRoom = new Room("\nYou entered through the only door, and see a quite uncanny livingroom."
+                + "\nIt has everything a livingroom needs to have but covered in dust and spider web, "
+                + "the furnitures looks like something from hundres of years ago");
 
         Room library = new Room("\nYou step in to a tall but small room, the walls are giant bookshelfs, "
                 + "\nwith no spot left open for new books. You look around and notice that all the books "
@@ -29,29 +29,38 @@ public class Controller {
                 + "\nin the middle of the room. The walls has enormous paintings on them, the motives on the paintings are dark "
                 + "\nand unsettleling, they seem like something only a mental person would have hanging.");
 
-        Room playRoom = new Room("Playroom");
+        Room playRoom = new Room("This seems weird.. It appears to be a room for toddlers, it has everything a toddler would want."
+                + "It doesnt look like something for patients, perhabs Dr. Amadeus has children?");
 
         Room Laboratory = new Room("\nYou go through a rusty old metal door, thinking to yourself only the worst kind of asylums "
                 + "\nwould have a metal door to keep their patients locked in. Then you realise, that this room is some kind of labatory, "
                 + "\nand definetly not for patients. The fear lingers in your body just thinking about what kind of experiments "
                 + "\nmight have happend to the patients. ");
 
-        Room diningRoom = new Room("Dining Room");
+        Room diningRoom = new Room("You have entered a large room,  it seems to be looking like a giant livingroom. "
+                + "The dinner table could hold a feast for up to 20 people but there is only one chair, "
+                + "right at the end of the table. It seems abandoned and there is no real sign of any life.");
 
-        Room kitchen = new Room("\nThis is without a doubt the kitchen. There is a distinct smell of rot. There may be something "
-                + "\nin here you could use.");
+        Room kitchen = new Room("\nThis is without a doubt the kitchen. There is a distinct smell of rot."
+                + "\nThere may be something in here you could use.");
 
-        Room bedroom = new Room("Bedroom");
+        Room bedroom = new Room("\nThis seems to be the bedroom, quite luxurius compared to the rest of the Asylum"
+                + "\nit must have belonged to the creator of the Asylum.");
 
-        Room ballRoom = new Room("Ball Room");
+        Room ballRoom = new Room("\n This room is very big and long. Two chandeliers hang from the top of the ceiling. "
+                + "\nThis must be the ball room");
 
-        Room cell1 = new Room("Cell 1");
+        Room cell1 = new Room("\nYou have entered some sort of prison cell, it must be here he kept his patients locked up."
+                + "\nIts small and dark with nothing but some hay in the corner and a skeleton.");
 
-        Room cell2 = new Room("Cell 2");
+        Room cell2 = new Room("\nYou have entered some sort of prison cell, it must be here he kept his patients locked up."
+                + "\nIts small and dark with nothing but some hay in the corner.");
 
-        Room toilet = new Room("You feel like your hand has gotten some sort of infection from just touching that doorhandle. You are  ");
+        Room toilet = new Room("\nYou feel like your hand has gotten some sort of infection from just touching that doorhandle. "
+                + "\nYou are disgusted by the smell of what seems to be a toilet that has never been cleaned.");
 
-        Room cell3 = new Room("Cell 3");
+        Room cell3 = new Room("\nYou entered a small cell, with a small crack in the wall where the sunlight comes through."
+                + "\nYou move the broken bricks to make a escape and are able to get out.");
 
         hall.setSouth(livingRoom);
 
@@ -106,7 +115,7 @@ public class Controller {
 //        }
         while (true) {
             Room nextRoom = null;
-            do {
+             {
                 int svar = display.getDirections();
 
                 switch (svar) {
@@ -123,7 +132,11 @@ public class Controller {
                         nextRoom = player.getLocation().getWest();
                         break;
                 }
-            } while (nextRoom == null);
+            } while (nextRoom == null) {
+            if (player.getLocation().equals(cell3)) {
+                System.exit(0);
+            }
+        }
             {
                 player.setLocation(nextRoom);
                 desc = nextRoom.getDescription();
