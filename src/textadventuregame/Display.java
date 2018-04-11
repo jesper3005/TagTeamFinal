@@ -9,8 +9,8 @@ public class Display {
     
     public void Welcome(){
         System.out.println("\nLocated in Gothem Citys, in a dark and mystery neighborhood."
-                + "\nYou start your adventure in the main hall where your journey of madness will begin."
-                + "\nSlinder throug the rooms of the historcial landmark of Gotham and fight against the creatures, "
+                + "\nYou start your adventure in front of the grand Asylum where your journey of madness will begin."
+                + "\nSlinder throug the rooms of the historcial landmark of Gotham and fight against evil creatures, "
                 + "\ncreated by the late desiesed Dr. Amadeus Arkham, the founder of the Asylum"
                 + "\nLet's play!");
     }
