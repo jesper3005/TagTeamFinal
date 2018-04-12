@@ -1,5 +1,8 @@
 package textadventuregame;
 
+import java.io.File;
+import static textadventuregame.Display.playSound;
+
 public class Controller {
 
     Display display = new Display();
@@ -10,13 +13,19 @@ public class Controller {
     public static final int SOUTH = 2;
     public static final int WEST = 3;
     private Room endRoom;
-            Room nextRoom = null;
+    Room nextRoom = null;
 
-    public void start() {
+    File Door = new File("door.wav");
+    File HeartBeat = new File("heartbeat.wav");
+    File HountedHouse = new File("hauntedhouse.wav");
+    
+    public void start() throws InterruptedException {
         Room hall = createRooms();
-
+        playSound(HeartBeat);
+        playSound(HeartBeat);
         player = new Player(display.setName(), hall);
         String desc = hall.getDescription();
+        playSound(HountedHouse);
         display.Welcome();
         display.getRoomDescription(desc);
 
@@ -25,6 +34,7 @@ public class Controller {
 
             {
                 player.setLocation(nextRoom);
+                playSound(Door);
                 desc = nextRoom.getDescription();
                 display.getRoomDescription(desc);
             }
@@ -151,7 +161,6 @@ public class Controller {
         toilet.setWest(cell2);
 
         cell3.setNorth(cell2);
-        
 
         endRoom = cell3;
 
