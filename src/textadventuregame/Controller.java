@@ -146,11 +146,12 @@ public class Controller {
 
         cell2.setNorth(kitchen);
         cell2.setEast(toilet);
+        cell2.setSouth(cell3);
 
         toilet.setWest(cell2);
 
-        cell3.setEast(cell2);
-        cell3.setWest(cell1);
+        cell3.setNorth(cell2);
+        
 
         endRoom = cell3;
 
